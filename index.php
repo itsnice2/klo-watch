@@ -11,7 +11,7 @@
     <h1>Klo-Watch!</h1>
     
     <?php
-        
+        /*
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'zahlschreiben') {
             // Die PHP-Funktion aufrufen
             zahlschreiben();
@@ -53,7 +53,9 @@
             header("Location: index.php");
             exit();
         }
+        */
     ?>
+
 
     <article contentEditable>
         <div class="container-fluid">
@@ -101,12 +103,27 @@
             </div>
         </div>
     </article>
-
-    <form method="post">
-        <input type="hidden" name="action" value="zahlschreiben">
-        <!-- <button type="hidden submit">PHP-Funktion starten</button> -->
-    </form>
-
     
 </body>
+
+    <script>
+
+        var count = (function(){
+            var counter = 0;
+            return function () {return counter;} // += 1;}
+        })();
+
+        function zahlschreiben(){
+            var zahl = count();
+            zahl += 1;
+            document.getElementById("zahl").innerHTML = zahl;
+            fetch('dateischreiben.php')
+                .then(response => response.text())
+                .then(data => {
+                // Bearbeite die Antwort des PHP-Skripts
+                });
+        }
+
+    </script>   
+
 </html>

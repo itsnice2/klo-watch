@@ -9,53 +9,6 @@
 </head>
 <body>
     <h1>Klo-Watch!</h1>
-    
-    <?php
-        /*
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'zahlschreiben') {
-            // Die PHP-Funktion aufrufen
-            zahlschreiben();
-            //echo 'PHP-Funktion erfolgreich ausgeführt.';
-        }
-
-        function zahlschreiben(){
-            
-            // Dateipfad zur zu lesenden Datei
-            $filePath = 'count.txt';
-                            
-            // Den Inhalt der Datei lesen
-            $fileContent = file_get_contents($filePath);
-            
-            // Ausgabe des Dateiinhalts
-            //echo $fileContent;
-
-            // Dateipfad zur zu schreibenden Datei
-            //$filePath = 'count.txt';
-
-            // Inhalt, der in die Datei geschrieben werden soll
-            $newContent = $fileContent + 1;
-
-            // Datei öffnen (wenn nicht vorhanden, wird sie erstellt)
-            $fileHandle = fopen($filePath, 'w');
-
-            // Überprüfen, ob das Öffnen der Datei erfolgreich war
-            if ($fileHandle) {
-                // Inhalt in die Datei schreiben
-                fwrite($fileHandle, $newContent);
-
-                // Datei schließen
-                fclose($fileHandle);
-
-                //echo 'Erfolgreich in die Datei geschrieben.';
-            } else {
-                echo 'Fehler beim Öffnen der Datei.';
-            }
-            header("Location: index.php");
-            exit();
-        }
-        */
-    ?>
-
 
     <article contentEditable>
         <div class="container-fluid">
@@ -109,11 +62,21 @@
     <script>
 
         var count = (function(){
-            var counter = 0;
+            var counter = <?php
+            // Dateipfad zur zu lesenden Datei
+            $filePath = 'count.txt';
+                            
+            // Den Inhalt der Datei lesen
+            $fileContent = file_get_contents($filePath);
+            
+            // Ausgabe des Dateiinhalts
+            echo $fileContent;
+            ?>;
             return function () {return counter;} // += 1;}
         })();
 
         function zahlschreiben(){
+            
             var zahl = count();
             zahl += 1;
             document.getElementById("zahl").innerHTML = zahl;

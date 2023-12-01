@@ -7,12 +7,19 @@ body{
 h1{
     color: white;
     text-align: center;
-    padding-top: 20%;
+    padding-top: 10%;
 }
 
 h2{
     color: rgb(235, 204, 120);
     text-align: center;
+}
+
+h3{
+    color: rgb(235, 204, 120);
+    font-size: xx-small;
+    text-align: center;
+    padding-top: 50px;
 }
 
 .eingabe{
